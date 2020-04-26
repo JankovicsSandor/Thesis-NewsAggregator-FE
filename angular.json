@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "newProjectRoot": "projects",
   "projects": {
     "news-aggregator-app": {
       "projectType": "application",
@@ -122,6 +123,46 @@
             "exclude": [
               "**/node_modules/**",
               "!apps/news-aggregator-app-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "viewer-components": {
+      "projectType": "library",
+      "root": "projects/viewer-components",
+      "sourceRoot": "projects/viewer-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/viewer-components/tsconfig.lib.json",
+            "project": "projects/viewer-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/viewer-components/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/viewer-components/src/test.ts",
+            "tsConfig": "projects/viewer-components/tsconfig.spec.json",
+            "karmaConfig": "projects/viewer-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/viewer-components/tsconfig.lib.json",
+              "projects/viewer-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
             ]
           }
         }
