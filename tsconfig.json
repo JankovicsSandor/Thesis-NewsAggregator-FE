@@ -24,6 +24,10 @@
       "viewer-components": [
         "dist/viewer-components/viewer-components",
         "dist/viewer-components"
+      ],
+      "shared": [
+        "dist/shared/shared",
+        "dist/shared"
       ]
     }
   },
