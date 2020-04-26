@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { ViewerComponentsComponent } from './viewer-components.component';
-
-
+import { SimpleSelectModule } from './simple-select/simple-select.module';
 
 @NgModule({
-  declarations: [ViewerComponentsComponent],
-  imports: [
-  ],
-  exports: [ViewerComponentsComponent]
+  declarations: [],
+  imports: [SimpleSelectModule],
+  exports: [SimpleSelectModule]
 })
-export class ViewerComponentsModule { }
+export class ViewerComponentsModule {}
