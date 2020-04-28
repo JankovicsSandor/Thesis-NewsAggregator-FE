@@ -10,15 +10,31 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@viewer-components": ["projects/viewer-components/src/public-api"],
-      "@shared": ["projects/shared/src/public-api"]
+      "@viewer-components": [
+        "projects/viewer-components/src/public-api"
+      ],
+      "@shared": [
+        "projects/shared/src/public-api"
+      ],
+      "data-provider": [
+        "dist/data-provider/data-provider",
+        "dist/data-provider"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

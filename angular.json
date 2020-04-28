@@ -26,7 +26,10 @@
               "apps/news-aggregator-app/src/favicon.ico",
               "apps/news-aggregator-app/src/assets"
             ],
-            "styles": ["apps/news-aggregator-app/src/styles.scss"],
+            "styles": [
+              "apps/news-aggregator-app/src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/purple-green.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -161,9 +164,7 @@
               "projects/viewer-components/tsconfig.lib.json",
               "projects/viewer-components/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -200,6 +201,44 @@
             "tsConfig": [
               "projects/shared/tsconfig.lib.json",
               "projects/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "data-provider": {
+      "projectType": "library",
+      "root": "projects/data-provider",
+      "sourceRoot": "projects/data-provider/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/data-provider/tsconfig.lib.json",
+            "project": "projects/data-provider/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/data-provider/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/data-provider/src/test.ts",
+            "tsConfig": "projects/data-provider/tsconfig.spec.json",
+            "karmaConfig": "projects/data-provider/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/data-provider/tsconfig.lib.json",
+              "projects/data-provider/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

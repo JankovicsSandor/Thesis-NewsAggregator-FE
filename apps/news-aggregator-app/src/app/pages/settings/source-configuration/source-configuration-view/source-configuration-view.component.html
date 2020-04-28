@@ -1,0 +1,25 @@
+<div class="container">
+    <div>
+        <mat-form-field appearance="outline" class="rssUrl">
+            <mat-label>RSS feed url</mat-label>
+            <input matInput placeholder="Url of RSS feed">
+            <mat-icon matSuffix>rss_feed</mat-icon>
+            <mat-hint>Paste the url here</mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="propertyField">
+        <div>
+            <simple-select [label]="'Title property'"></simple-select>
+        </div>
+        <div>
+            <simple-select [label]="'Description property'"></simple-select>
+        </div>
+        <div>
+            <simple-select [label]="'Date property'"></simple-select>
+        </div>
+        <div>
+            <simple-select [label]="'Link property'"></simple-select>
+        </div>
+    </div>
+
+</div>

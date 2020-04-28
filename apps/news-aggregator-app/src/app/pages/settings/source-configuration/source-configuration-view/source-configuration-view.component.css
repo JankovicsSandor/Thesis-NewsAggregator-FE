@@ -1,0 +1,11 @@
+.container {
+  width: 80%;
+  margin: 16px auto auto;
+}
+
+.rssUrl {
+  width: 90%;
+}
+.propertyField {
+  width: 50%;
+}

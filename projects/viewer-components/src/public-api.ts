@@ -2,6 +2,5 @@
  * Public API Surface of viewer-components
  */
 
-export * from './lib/viewer-components.service';
-export * from './lib/viewer-components.component';
-export * from './lib/viewer-components.module';
+export * from './lib/news-item';
+export * from './lib/simple-select';

@@ -2,12 +2,15 @@ import {
   Component,
   OnInit,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { ISelectItem } from '@shared';
 import { ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'simple-select',
@@ -17,8 +20,8 @@ import { map } from 'rxjs/operators';
 })
 export class SimpleSelectComponent implements OnInit {
   searchControl = new FormControl();
-  listItems: ReplaySubject<ISelectItem[]> = new ReplaySubject();
-  filteredList: ReplaySubject<ISelectItem[]> = new ReplaySubject();
+  listItems: BehaviorSubject<ISelectItem[]> = new BehaviorSubject([]);
+  filteredList: BehaviorSubject<ISelectItem[]> = new BehaviorSubject([]);
 
   // By default the filtering of results are based on text
   filterProperty: BehaviorSubject<string> = new BehaviorSubject('text');
@@ -27,9 +30,13 @@ export class SimpleSelectComponent implements OnInit {
     this.filterProperty.next(property);
   }
 
+  @Input() label: string = 'Pick a field';
+
   @Input() set itemList(items: ISelectItem[]) {
     this.listItems.next(items);
   }
+
+  @Output() selectionChanged: EventEmitter<number> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {
@@ -46,5 +53,10 @@ export class SimpleSelectComponent implements OnInit {
         })
       )
       .subscribe(this.filteredList);
+  }
+
+  selectedItem(selectedItem: MatAutocompleteSelectedEvent) {
+    console.log(selectedItem.option);
+    // this.selectionChanged.emit(selectedItem.option.id);
   }
 }
