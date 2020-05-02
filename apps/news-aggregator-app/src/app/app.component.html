@@ -1,6 +1,11 @@
-<mat-drawer-container class="example-container" fullScreen autosize>
-  <mat-drawer mode="side" opened>Drawer content</mat-drawer>
+<mat-toolbar class="appToolbar">My App</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer mode="side" opened class="appDrawer">
+    Drawer content
+  </mat-drawer>
   <mat-drawer-content>
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
