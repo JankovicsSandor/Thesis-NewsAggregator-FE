@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  aggregatorBEUrl: 'http://localhost:5200'
+  aggregatorBEUrl: 'https://localhost:32768'
 };
 
 /*

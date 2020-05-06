@@ -1,4 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { SourceConfigurationService } from './services/source-configuration.service';
+import { ReplaySubject } from 'rxjs';
+import { NewsConfiguration } from '@shared';
 
 @Component({
   selector: 'news-aggregator-app-source-configuration',
@@ -7,7 +10,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SourceConfigurationComponent implements OnInit {
-  constructor() {}
+  lastSample$: ReplaySubject<NewsConfiguration> = new ReplaySubject();
+  constructor(private sourceConfigService: SourceConfigurationService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sourceConfigService.getLastSample$().subscribe(this.lastSample$);
+  }
+
+  downnloadSampleArticleFromSource(url: string) {
+    this.sourceConfigService.getSampleFromUrl(url);
+  }
 }

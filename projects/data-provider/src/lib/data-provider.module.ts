@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
-import { DataProviderComponent } from './data-provider.component';
-
-
+import { ResourceDataProviderService } from './resource-data-provider.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [DataProviderComponent],
-  imports: [
-  ],
-  exports: [DataProviderComponent]
+  imports: [HttpClientModule],
+  providers: [ResourceDataProviderService]
 })
-export class DataProviderModule { }
+export class DataProviderModule {}

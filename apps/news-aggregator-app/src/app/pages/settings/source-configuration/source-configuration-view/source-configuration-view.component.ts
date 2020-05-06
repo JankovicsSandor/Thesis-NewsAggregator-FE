@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'news-aggregator-app-source-configuration-view',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./source-configuration-view.component.css']
 })
 export class SourceConfigurationViewComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  @Output() refreshConfiguration: EventEmitter<string> = new EventEmitter<
+    string
+  >();
+  urlControl: FormControl;
+  constructor() {
+    this.urlControl = new FormControl();
   }
 
+  ngOnInit(): void {}
+
+  refreshConfig() {
+    this.refreshConfiguration.emit(this.urlControl.value);
+  }
 }
