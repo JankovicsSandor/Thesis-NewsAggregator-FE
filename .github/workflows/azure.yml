@@ -30,17 +30,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install, build, and test
+    - name: npm install, build
       run: |
         # Build and test the project, then
         # deploy to Azure Web App.
         npm install
         npm install -g @angular/cli@latest
         ng build --prod
-        ls
-  #  - name: 'Deploy to Azure WebApp'
-  #    uses: lauchacarro/Azure-Storage-Action@master
-  #    with:
-  #      enabled-static-website: 'true'
-  #      folder: 'd'
-  #      connection-string: ${{ secrets.AZURE_CONNECTION_STRING }}
+    - name: 'Deploy to Azure WebApp'
+      uses: lauchacarro/Azure-Storage-Action@master
+      with:
+        enabled-static-website: 'true'
+        folder: 'dist/apps/news-aggregator-app'
+        connection-string: ${{ secrets.AZURE_CONNECTION_STRING }}
