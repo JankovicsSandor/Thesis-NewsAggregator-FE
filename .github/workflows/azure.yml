@@ -40,5 +40,5 @@ jobs:
       uses: lauchacarro/Azure-Storage-Action@master
       with:
         enabled-static-website: 'true'
-        folder: 'dist/apps/news-aggregator-app'
+        folder: 'dist'
         connection-string: ${{ secrets.AZURE_CONNECTION_STRING }}
