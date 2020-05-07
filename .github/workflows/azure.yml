@@ -36,9 +36,10 @@ jobs:
         # deploy to Azure Web App.
         npm install
         npm run build:prod --if-present
-    - name: 'Deploy to Azure WebApp'
-      uses: lauchacarro/Azure-Storage-Action@master
-      with:
-        enabled-static-website: 'true'
-        folder: 'dist'
-        connection-string: ${{ secrets.AZURE_CONNECTION_STRING }}
+        ls
+  #  - name: 'Deploy to Azure WebApp'
+  #    uses: lauchacarro/Azure-Storage-Action@master
+  #    with:
+  #      enabled-static-website: 'true'
+  #      folder: 'd'
+  #      connection-string: ${{ secrets.AZURE_CONNECTION_STRING }}
