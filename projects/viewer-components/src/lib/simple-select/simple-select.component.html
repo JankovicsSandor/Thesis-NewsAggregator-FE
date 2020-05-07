@@ -1,0 +1,11 @@
+<form class="example-form">
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>{{label}}</mat-label>
+        <input matInput placeholder="Select one" [formControl]="searchControl" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="selectedItem($event)">
+            <mat-option *ngFor="let option of filteredList | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

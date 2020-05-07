@@ -1,0 +1,13 @@
+<form>
+    <div class="container">
+        <div>
+            <mat-form-field appearance="outline" class="rssUrl">
+                <mat-label>RSS feed url</mat-label>
+                <input matInput placeholder="Url of RSS feed" [formControl]="urlControl">
+                <mat-icon matSuffix>rss_feed</mat-icon>
+                <mat-hint>Paste the url here</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button (click)="refreshConfig()">Refresh</button>
+        </div>
+    </div>
+</form>

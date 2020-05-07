@@ -1,0 +1,12 @@
+.textWrapper::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid gray;
+  margin-left: 8px;
+}
+
+.textWrapper {
+  display: flex;
+  align-items: center;
+}
