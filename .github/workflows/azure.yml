@@ -35,6 +35,7 @@ jobs:
         # Build and test the project, then
         # deploy to Azure Web App.
         npm install
+        npm install -g @angular/cli@latest
         ng build --prod
         ls
   #  - name: 'Deploy to Azure WebApp'
