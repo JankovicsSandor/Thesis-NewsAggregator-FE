@@ -35,7 +35,7 @@ jobs:
         # Build and test the project, then
         # deploy to Azure Web App.
         npm install
-        npm run build:prod --if-present
+        ng build --prod
         ls
   #  - name: 'Deploy to Azure WebApp'
   #    uses: lauchacarro/Azure-Storage-Action@master
