@@ -31,7 +31,7 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
     - name: npm install, build
-    - continue-on-error: false
+      continue-on-error: false
       run: |
         # Build and test the project, then
         # deploy to Azure Web App.
