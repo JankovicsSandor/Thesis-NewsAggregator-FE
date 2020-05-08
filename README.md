@@ -1,4 +1,4 @@
-# NewsAggregatorApp
+# NewsAggregatorApp hosted in cloud
 
 This project was generated using [Nx](https://nx.dev).
 
