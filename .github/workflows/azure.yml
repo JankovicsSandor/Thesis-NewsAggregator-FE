@@ -22,7 +22,6 @@ env:
 
 jobs:
   build-and-deploy:
-    continue-on-error: false
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +31,7 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
     - name: npm install, build
+    - continue-on-error: false
       run: |
         # Build and test the project, then
         # deploy to Azure Web App.
