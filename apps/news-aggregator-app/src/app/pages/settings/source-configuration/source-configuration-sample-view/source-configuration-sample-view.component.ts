@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewsConfiguration } from '@shared';
 
 @Component({
@@ -8,7 +8,13 @@ import { NewsConfiguration } from '@shared';
 })
 export class SourceConfigurationSampleViewComponent implements OnInit {
   @Input() sample: NewsConfiguration;
+
+  @Output() saveEvent: EventEmitter<NewsConfiguration> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+
+  saveItem() {
+    this.saveEvent.emit(this.sample);
+  }
 }

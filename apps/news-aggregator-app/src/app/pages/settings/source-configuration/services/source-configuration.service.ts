@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ResourceDataProviderService } from '@data-provider';
 import { ReplaySubject } from 'rxjs';
-import { NewsConfiguration } from '@shared';
+import { NewsConfiguration, NewResourceConfiguration } from '@shared';
 
 @Injectable()
 export class SourceConfigurationService {
@@ -21,5 +21,11 @@ export class SourceConfigurationService {
     this.resourceConfig
       .getResourceConfiguration(url)
       .subscribe(this.lastSample$);
+  }
+
+  addNewResource(newItem: NewResourceConfiguration) {
+    this.resourceConfig.addNewResourceConfiguration(newItem).subscribe(() => {
+      // TODO
+    });
   }
 }
