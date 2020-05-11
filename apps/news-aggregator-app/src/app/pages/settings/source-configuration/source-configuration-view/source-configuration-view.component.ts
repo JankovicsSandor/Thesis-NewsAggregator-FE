@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  FormControl,
+  FormBuilder,
+  Validators,
+  FormGroup
+} from '@angular/forms';
 import { NewResourceConfiguration } from '@shared';
 
 @Component({
@@ -14,22 +19,25 @@ export class SourceConfigurationViewComponent implements OnInit {
   @Output() saveConfiguration: EventEmitter<
     NewResourceConfiguration
   > = new EventEmitter<NewResourceConfiguration>();
-  urlControl: FormControl;
-  nameControl: FormControl;
-  constructor() {
-    this.urlControl = new FormControl();
+  addForm: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.addForm = this.fb.group({
+      url: ['', Validators.required],
+      name: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {}
 
   refreshConfig() {
-    this.refreshConfiguration.emit(this.urlControl.value);
+    this.refreshConfiguration.emit(this.addForm.value.url);
   }
 
   saveConfig() {
     this.saveConfiguration.emit(<NewResourceConfiguration>{
-      name: this.nameControl.value,
-      url: this.urlControl.value
+      name: this.addForm.value.name,
+      url: this.addForm.value.url
     });
+    this.addForm.reset();
   }
 }

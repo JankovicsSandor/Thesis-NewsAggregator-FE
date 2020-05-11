@@ -3,5 +3,5 @@
  */
 
 export { DataProviderModule } from './lib/data-provider.module';
-export { ResourceDataProviderService } from './lib/resource-data-provider.service';
-export * from './lib/data-provider.module';
+export { ResourceDataProviderService } from './lib/resource-data/resource-data-provider.service';
+export { NewsDataProviderService } from './lib/news-data/news-data-provider.service';

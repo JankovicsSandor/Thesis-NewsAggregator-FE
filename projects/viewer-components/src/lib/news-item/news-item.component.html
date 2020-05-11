@@ -9,13 +9,9 @@
         </mat-card-title>
         <mat-card-subtitle>{{newsItem.publishDate|date:'medium'}}</mat-card-subtitle>
     </mat-card-header>
-    <ng-container *ngIf="newsItem.picture else notPhoto ">
-        <img mat-card-image [src]="newsItem.picture" alt="Photo of a Shiba Inu">
+    <ng-container *ngIf="newsItem.picture ">
+        <img mat-card-image [src]="newsItem.picture" alt="Picture of he article">
     </ng-container>
-    <ng-template #notPhoto>
-        <img mat-card-image src="assets/no_photo" alt="Photo of a Shiba Inu">
-    </ng-template>
-
     <mat-card-content>
         <p>
             {{newsItem.description}}
