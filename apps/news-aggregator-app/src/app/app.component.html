@@ -1,4 +1,14 @@
-<mat-toolbar class="appToolbar">My App</mat-toolbar>
+<mat-toolbar class="appToolbar">
+  <button mat-button routerLink="">
+    <h3>News Aggregator</h3>
+  </button>
+  <div class="spacer"></div>
+  <button mat-icon-button matTooltip="Settings" routerLink="/settings">
+    <mat-icon>settings</mat-icon>
+  </button>
+
+
+</mat-toolbar>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer mode="side" opened class="appDrawer">
     Drawer content
