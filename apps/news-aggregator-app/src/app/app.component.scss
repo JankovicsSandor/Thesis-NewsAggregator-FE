@@ -18,3 +18,10 @@
 .spacer {
   flex-grow: 1;
 }
+
+.indicator {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}

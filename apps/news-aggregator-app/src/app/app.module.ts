@@ -9,9 +9,14 @@ import { DataProviderModule } from '@data-provider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { LoaderIndicatorService } from '../services/loader/loader-indicator.service';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderIndicatorInterceptor } from '../interceptor/loader-indicator.interceptor';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoadingIndicatorComponent],
   imports: [
     BrowserModule,
     MatToolbarModule,
@@ -21,9 +26,17 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     DataProviderModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressBarModule
   ],
-  providers: [],
+  providers: [
+    LoaderIndicatorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderIndicatorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
