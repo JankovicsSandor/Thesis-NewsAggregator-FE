@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ResourceDataProviderService } from '@data-provider';
 import { ReplaySubject } from 'rxjs';
 import { NewsConfiguration, NewResourceConfiguration } from '@shared';
+import { ResourceDataProviderService } from '@data-provider';
 
 @Injectable()
 export class SourceConfigurationService {

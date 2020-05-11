@@ -2,6 +2,6 @@
     (saveConfiguration)="saveResource($event)">
 </news-aggregator-app-source-configuration-view>
 <ng-container *ngIf="lastSample$|async as sample">
-    <news-aggregator-app-source-configuration-sample-view [sample]="sample">
+    <news-aggregator-app-source-configuration-sample-view [sample]="sample" (saveEvent)=saveResource($event)>
     </news-aggregator-app-source-configuration-sample-view>
 </ng-container>

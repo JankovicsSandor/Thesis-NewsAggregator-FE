@@ -6,6 +6,15 @@
 .rssUrl {
   width: 90%;
 }
+
 .propertyField {
   width: 50%;
+}
+
+.actionButton {
+  margin: auto;
+}
+
+.content-row {
+  display: flex;
 }
