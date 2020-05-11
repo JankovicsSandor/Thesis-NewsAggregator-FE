@@ -5,12 +5,14 @@
         </div>
         <mat-card-title>
             <img *ngIf="newsItem.author" [src]="newsItem.author.picture" class="">
-            <div>{{newsItem.title}}</div>
+            <a [href]="newsItem.link" target="_other">
+                <div>{{newsItem.title}}</div>
+            </a>
         </mat-card-title>
         <mat-card-subtitle>{{newsItem.publishDate|date:'medium'}}</mat-card-subtitle>
     </mat-card-header>
     <ng-container *ngIf="newsItem.picture ">
-        <img mat-card-image [src]="newsItem.picture" alt="Picture of he article">
+        <img mat-card-image [src]="newsItem.picture" alt="Picture of the article">
     </ng-container>
     <mat-card-content>
         <p>
@@ -18,7 +20,6 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <button mat-button [cdkCopyToClipboard]="newsItem.link">SHARE</button>
     </mat-card-actions>
 </mat-card>

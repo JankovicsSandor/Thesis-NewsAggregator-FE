@@ -1,6 +1,10 @@
 <div class="main-container">
-    <div>
-        {{(newsList|async)?.total}}
+    <div class="pageNumberContiner">
+        <button *ngFor="let number of pageList$|async" class="pageNumber" (click)="setPageNumber(number)">
+            <span class="numberLabel">
+                {{number}}
+            </span>
+        </button>
     </div>
     <div *ngFor="let item of (newsList|async)?.result" class="newsItem">
         <news-item [newsItem]="item"></news-item>

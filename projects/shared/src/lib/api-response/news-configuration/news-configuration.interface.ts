@@ -5,6 +5,7 @@ export interface NewsConfiguration {
   description: string;
   publishDate: Date;
   picture: string;
+  link: string;
 
   author: NewsAuthor;
 }
