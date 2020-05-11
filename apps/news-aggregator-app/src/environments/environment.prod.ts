@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  aggregatorBEUrl: 'http://localhost:5200'
+  newsApi: 'https://aggregatornewsapi.azurewebsites.net/api/',
+  resourceApi: 'https://resourceconfigurator.azurewebsites.net/api/'
 };

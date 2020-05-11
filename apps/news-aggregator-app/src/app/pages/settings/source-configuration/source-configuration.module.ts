@@ -8,12 +8,14 @@ import { SimpleSelectModule, NewsItemModule } from '@viewer-components';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SourceConfigurationService } from './services/source-configuration.service';
+import { SourceConfigurationSampleViewComponent } from './source-configuration-sample-view/source-configuration-sample-view.component';
 
 @NgModule({
   providers: [SourceConfigurationService],
   declarations: [
     SourceConfigurationComponent,
-    SourceConfigurationViewComponent
+    SourceConfigurationViewComponent,
+    SourceConfigurationSampleViewComponent
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  aggregatorBEUrl: 'https://localhost:32768'
+  newsApi: 'https://localhost:44306/api/',
+  resourceApi: 'https://localhost:44365/api/'
 };
 
 /*

@@ -1,10 +1,7 @@
-<news-aggregator-app-source-configuration-view (refreshConfiguration)="downnloadSampleArticleFromSource($event)">
+<news-aggregator-app-source-configuration-view (refreshConfiguration)="downnloadSampleArticleFromSource($event)"
+    (saveConfiguration)="saveResource($event)">
 </news-aggregator-app-source-configuration-view>
 <ng-container *ngIf="lastSample$|async as sample">
-    <div class="textWrapper">
-        <h3 class="sampleText">
-            Sample
-        </h3>
-    </div>
-    <news-item [newsItem]="sample"></news-item>
+    <news-aggregator-app-source-configuration-sample-view [sample]="sample" (saveEvent)=saveResource($event)>
+    </news-aggregator-app-source-configuration-sample-view>
 </ng-container>

@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SourceConfigurationService } from './services/source-configuration.service';
 import { ReplaySubject } from 'rxjs';
-import { NewsConfiguration } from '@shared';
+import { NewsConfiguration, NewResourceConfiguration } from '@shared';
 
 @Component({
   selector: 'news-aggregator-app-source-configuration',
@@ -19,5 +19,9 @@ export class SourceConfigurationComponent implements OnInit {
 
   downnloadSampleArticleFromSource(url: string) {
     this.sourceConfigService.getSampleFromUrl(url);
+  }
+
+  saveResource(config: NewResourceConfiguration) {
+    this.sourceConfigService.addNewResource(config);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { INewsItem } from '@shared';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { NewsConfiguration } from '@shared';
+import { NewsDataProviderService } from '@data-provider';
 
 @Component({
   selector: 'news-list',
@@ -8,40 +9,10 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./news-list.component.css']
 })
 export class NewsListComponent implements OnInit {
-  newsList: BehaviorSubject<INewsItem[]> = new BehaviorSubject(
-    this.getNewsItems()
-  );
-  constructor() {}
+  newsList: ReplaySubject<NewsConfiguration[]> = new ReplaySubject();
+  constructor(private articleService: NewsDataProviderService) {}
 
-  ngOnInit(): void {}
-
-  getNewsItems() {
-    return [
-      <INewsItem>{
-        description: 'Something happened',
-        title: 'Hello there',
-        publishDate: new Date()
-      },
-      <INewsItem>{
-        description: 'Something happened',
-        title: 'Hello there',
-        publishDate: new Date()
-      },
-      <INewsItem>{
-        description: 'Something happened',
-        title: 'Hello there',
-        publishDate: new Date()
-      },
-      <INewsItem>{
-        description: 'Something happened',
-        title: 'Hello there',
-        publishDate: new Date()
-      },
-      <INewsItem>{
-        description: 'Something happened',
-        title: 'Hello there',
-        publishDate: new Date()
-      }
-    ];
+  ngOnInit(): void {
+    this.articleService.getArticles$().subscribe(this.newsList);
   }
 }

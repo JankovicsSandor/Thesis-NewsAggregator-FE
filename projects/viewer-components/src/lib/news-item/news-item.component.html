@@ -4,11 +4,14 @@
 
         </div>
         <mat-card-title>
-            <img *ngIf="newsItem.author" [src]="newsItem.author.picture">
-            {{newsItem.title}}</mat-card-title>
+            <img *ngIf="newsItem.author" [src]="newsItem.author.picture" class="">
+            <div>{{newsItem.title}}</div>
+        </mat-card-title>
         <mat-card-subtitle>{{newsItem.publishDate|date:'medium'}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <ng-container *ngIf="newsItem.picture ">
+        <img mat-card-image [src]="newsItem.picture" alt="Picture of he article">
+    </ng-container>
     <mat-card-content>
         <p>
             {{newsItem.description}}

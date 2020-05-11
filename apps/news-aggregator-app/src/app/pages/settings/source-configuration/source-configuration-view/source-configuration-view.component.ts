@@ -1,5 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  FormControl,
+  FormBuilder,
+  Validators,
+  FormGroup
+} from '@angular/forms';
+import { NewResourceConfiguration } from '@shared';
 
 @Component({
   selector: 'news-aggregator-app-source-configuration-view',
@@ -10,14 +16,28 @@ export class SourceConfigurationViewComponent implements OnInit {
   @Output() refreshConfiguration: EventEmitter<string> = new EventEmitter<
     string
   >();
-  urlControl: FormControl;
-  constructor() {
-    this.urlControl = new FormControl();
+  @Output() saveConfiguration: EventEmitter<
+    NewResourceConfiguration
+  > = new EventEmitter<NewResourceConfiguration>();
+  addForm: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.addForm = this.fb.group({
+      url: ['', Validators.required],
+      name: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {}
 
   refreshConfig() {
-    this.refreshConfiguration.emit(this.urlControl.value);
+    this.refreshConfiguration.emit(this.addForm.value.url);
+  }
+
+  saveConfig() {
+    this.saveConfiguration.emit(<NewResourceConfiguration>{
+      name: this.addForm.value.name,
+      url: this.addForm.value.url
+    });
+    this.addForm.reset();
   }
 }

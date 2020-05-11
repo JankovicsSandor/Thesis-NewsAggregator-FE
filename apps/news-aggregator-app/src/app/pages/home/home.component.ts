@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { INewsItem } from '@shared';
+import { NewsDataProviderService } from '@data-provider';
 
 @Component({
   selector: 'news-aggregator-app-home',
@@ -8,7 +7,9 @@ import { INewsItem } from '@shared';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private newsData: NewsDataProviderService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newsData.getArticles(null);
+  }
 }

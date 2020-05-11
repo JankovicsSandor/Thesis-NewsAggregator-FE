@@ -1,13 +1,20 @@
-<form>
+<form [formGroup]="addForm">
     <div class="container">
-        <div>
-            <mat-form-field appearance="outline" class="rssUrl">
-                <mat-label>RSS feed url</mat-label>
-                <input matInput placeholder="Url of RSS feed" [formControl]="urlControl">
-                <mat-icon matSuffix>rss_feed</mat-icon>
-                <mat-hint>Paste the url here</mat-hint>
-            </mat-form-field>
-            <button mat-raised-button (click)="refreshConfig()">Refresh</button>
+        <mat-form-field appearance="outline" class="rssUrl">
+            <mat-label>Name: </mat-label>
+            <input matInput placeholder="Name of the agency" formControlName="name">
+            <mat-hint>Add the name of the agency</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="rssUrl">
+            <mat-label>RSS feed url</mat-label>
+            <input matInput placeholder="Url of RSS feed" formControlName="url">
+            <mat-icon matSuffix>rss_feed</mat-icon>
+            <mat-hint>Paste the url here</mat-hint>
+        </mat-form-field>
+        <div class="content-row">
+            <button mat-raised-button (click)="refreshConfig()" class="actionButton">Refresh</button>
+            <button mat-raised-button (click)="saveConfig()" class="actionButton"
+                [disabled]="!addForm.valid">Save</button>
         </div>
     </div>
 </form>
