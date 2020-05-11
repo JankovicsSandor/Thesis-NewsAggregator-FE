@@ -1,5 +1,8 @@
 <div class="main-container">
-    <div *ngFor="let item of newsList|async" class="newsItem">
+    <div>
+        {{(newsList|async)?.total}}
+    </div>
+    <div *ngFor="let item of (newsList|async)?.result" class="newsItem">
         <news-item [newsItem]="item"></news-item>
     </div>
 </div>

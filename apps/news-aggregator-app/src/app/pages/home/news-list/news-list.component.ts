@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { NewsConfiguration } from '@shared';
+import { ReplaySubject } from 'rxjs';
+import { ArticleListResponse } from '@shared';
 import { NewsDataProviderService } from '@data-provider';
 
 @Component({
@@ -9,7 +9,7 @@ import { NewsDataProviderService } from '@data-provider';
   styleUrls: ['./news-list.component.css']
 })
 export class NewsListComponent implements OnInit {
-  newsList: ReplaySubject<NewsConfiguration[]> = new ReplaySubject();
+  newsList: ReplaySubject<ArticleListResponse> = new ReplaySubject();
   constructor(private articleService: NewsDataProviderService) {}
 
   ngOnInit(): void {

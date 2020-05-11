@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NewsQuery, NewsConfiguration } from '@shared';
+import { NewsQuery, NewsConfiguration, ArticleListResponse } from '@shared';
 import { NetworkClientService } from '../network-client/network-client.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'apps/news-aggregator-app/src/environments/environment';
@@ -8,7 +8,7 @@ import { ReplaySubject } from 'rxjs';
 @Injectable()
 export class NewsDataProviderService extends NetworkClientService {
   private articleList$: ReplaySubject<
-    NewsConfiguration[]
+    ArticleListResponse
   > = new ReplaySubject();
   constructor(protected http: HttpClient) {
     super(http, environment.newsApi);
@@ -19,8 +19,8 @@ export class NewsDataProviderService extends NetworkClientService {
     return this.articleList$.asObservable();
   }
 
-  getArticles(query: NewsQuery) {
-    this.get<NewsConfiguration[]>('article', query).subscribe(
+  refreshArticleList(query: NewsQuery) {
+    this.get<ArticleListResponse>('article', query).subscribe(
       this.articleList$
     );
   }

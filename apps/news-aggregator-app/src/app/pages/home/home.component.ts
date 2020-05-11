@@ -10,6 +10,6 @@ export class HomeComponent implements OnInit {
   constructor(private newsData: NewsDataProviderService) {}
 
   ngOnInit(): void {
-    this.newsData.getArticles(null);
+    this.newsData.refreshArticleList(null);
   }
 }

@@ -18,7 +18,8 @@
     "paths": {
       "@viewer-components": ["projects/viewer-components/src/public-api"],
       "@shared": ["projects/shared/src/public-api"],
-      "@data-provider": ["projects/data-provider/src/public-api"]
+      "@data-provider": ["projects/data-provider/src/public-api"],
+      "@utils": ["projects/utils/src/public-api"]
     }
   },
   "exclude": ["node_modules", "tmp"]

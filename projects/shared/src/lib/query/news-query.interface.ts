@@ -1,5 +1,5 @@
 export interface NewsQuery {
-  mindDate: string;
+  minDate: string;
   maxDate: string;
   contains: string;
   page: number;

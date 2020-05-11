@@ -1,0 +1,35 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Apply Filter
+            </mat-panel-title>
+
+        </mat-expansion-panel-header>
+        <form [formGroup]="filterForm">
+            <div>
+                Contains text:
+                <mat-form-field>
+                    <input matInput formControlName="textFilter">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Start date:</mat-label>
+                    <input matInput [matDatepicker]="minDate" formControlName="minDate">
+                    <mat-datepicker-toggle matSuffix [for]="minDate"></mat-datepicker-toggle>
+                    <mat-datepicker #minDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>End date:</mat-label>
+                    <input matInput [matDatepicker]="maxDate" formControlName="maxDate">
+                    <mat-datepicker-toggle matSuffix [for]="maxDate"></mat-datepicker-toggle>
+                    <mat-datepicker #maxDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </form>
+        <button mat-raised-button (click)="refreshNewsList()">Refresh</button>
+    </mat-expansion-panel>
+
+</mat-accordion>
