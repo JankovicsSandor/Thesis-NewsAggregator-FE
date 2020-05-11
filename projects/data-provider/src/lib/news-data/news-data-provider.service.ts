@@ -4,17 +4,17 @@ import { NetworkClientService } from '../network-client/network-client.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'apps/news-aggregator-app/src/environments/environment';
 import { ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
-import { distinctUntilChanged, withLatestFrom } from 'rxjs/operators';
+import { distinctUntilChanged, withLatestFrom, filter } from 'rxjs/operators';
 
 @Injectable()
 export class NewsDataProviderService extends NetworkClientService {
   private articleList$: ReplaySubject<
     ArticleListResponse
   > = new ReplaySubject();
-  private pageNumber: BehaviorSubject<{
+  private pageNumber: ReplaySubject<{
     num: number;
     shouldRefresh: boolean;
-  }> = new BehaviorSubject({ num: 1, shouldRefresh: true });
+  }> = new ReplaySubject();
   private queryObject: BehaviorSubject<NewsQuery> = new BehaviorSubject(null);
   private pageNumber$: ReplaySubject<number[]> = new ReplaySubject();
   constructor(protected http: HttpClient) {
@@ -22,6 +22,7 @@ export class NewsDataProviderService extends NetworkClientService {
 
     this.pageNumber
       .pipe(
+        //Filter out the same number clicks
         distinctUntilChanged(
           (
             p: {
@@ -54,23 +55,13 @@ export class NewsDataProviderService extends NetworkClientService {
         });
       });
 
-    this.queryObject
-      .pipe(withLatestFrom(this.pageNumber))
-      .subscribe(([queryObject, pageNumber]) => {
-        if (queryObject) {
-          queryObject.page = pageNumber.num;
-        } else {
-          queryObject = <NewsQuery>{
-            page: pageNumber.num
-          };
-        }
-
-        this.get<ArticleListResponse>('article', queryObject).subscribe(val => {
-          // TODO investigate why copy is needed
-          this.articleList$.next(JSON.parse(JSON.stringify(val)));
-          this.createPageNumberArray(val.total);
-        });
+    this.queryObject.subscribe(queryObject => {
+      this.get<ArticleListResponse>('article', queryObject).subscribe(val => {
+        // TODO investigate why copy is needed
+        this.articleList$.next(JSON.parse(JSON.stringify(val)));
+        this.createPageNumberArray(val.total);
       });
+    });
   }
 
   createPageNumberArray(maxValue: number) {
