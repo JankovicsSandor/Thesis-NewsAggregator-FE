@@ -20,8 +20,9 @@ export class NewsDataProviderService extends NetworkClientService {
   }
 
   refreshArticleList(query: NewsQuery) {
-    this.get<ArticleListResponse>('article', query).subscribe(
-      this.articleList$
+    this.get<ArticleListResponse>('article', query).subscribe(val =>
+      // TODO investigate why copy is needed
+      this.articleList$.next(JSON.parse(JSON.stringify(val)))
     );
   }
 }

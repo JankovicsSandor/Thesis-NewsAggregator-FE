@@ -3,7 +3,7 @@ export function ObjectToQuery(objectModel: any) {
 
   for (const property in objectModel) {
     if (objectModel[property]) {
-      queryModel[property] = objectModel;
+      queryModel[property] = objectModel[property];
     }
   }
 

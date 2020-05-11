@@ -3,5 +3,5 @@ export function DateToString(data: Date, separator: string = '-') {
   let month = data.getMonth() + 1;
   let day = data.getDate();
 
-  return `${year}${separator}${year}${month}${year}${day}`;
+  return `${year}${separator}${month}${separator}${day}`;
 }
