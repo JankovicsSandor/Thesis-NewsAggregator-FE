@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SourceConfigurationService } from './services/source-configuration.service';
 import { ReplaySubject } from 'rxjs';
 import { NewsConfiguration, NewResourceConfiguration } from '@shared';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'news-aggregator-app-source-configuration',
@@ -11,7 +12,10 @@ import { NewsConfiguration, NewResourceConfiguration } from '@shared';
 })
 export class SourceConfigurationComponent implements OnInit {
   lastSample$: ReplaySubject<NewsConfiguration> = new ReplaySubject();
-  constructor(private sourceConfigService: SourceConfigurationService) {}
+  constructor(
+    private sourceConfigService: SourceConfigurationService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.sourceConfigService.getLastSample$().subscribe(this.lastSample$);
@@ -22,6 +26,13 @@ export class SourceConfigurationComponent implements OnInit {
   }
 
   saveResource(config: NewResourceConfiguration) {
-    this.sourceConfigService.addNewResource(config);
+    this.sourceConfigService
+      .addNewResource(config)
+      .then(value => {
+        this.toastr.success('Saved new resurce', 'Saved');
+      })
+      .catch(err => {
+        this.toastr.error('Error happened during save', 'Error');
+      });
   }
 }

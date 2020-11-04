@@ -24,8 +24,6 @@ export class SourceConfigurationService {
   }
 
   addNewResource(newItem: NewResourceConfiguration) {
-    this.resourceConfig.addNewResourceConfiguration(newItem).subscribe(() => {
-      // TODO
-    });
+    return this.resourceConfig.addNewResourceConfiguration(newItem).toPromise();
   }
 }

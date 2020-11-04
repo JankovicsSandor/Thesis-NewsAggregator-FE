@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  newsApi: 'https://localhost:44306/api/',
-  resourceApi: 'https://localhost:44365/api/'
+  newsApi: 'http://localhost:10010/api/news/',
+  resourceApi: 'http://localhost:10000/api/resource/'
 };
 
 /*

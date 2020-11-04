@@ -28,7 +28,8 @@
             ],
             "styles": [
               "apps/news-aggregator-app/src/styles.scss",
-              "node_modules/@angular/material/prebuilt-themes/purple-green.css"
+              "node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -240,9 +241,7 @@
               "projects/data-provider/tsconfig.lib.json",
               "projects/data-provider/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -280,9 +279,7 @@
               "projects/utils/tsconfig.lib.json",
               "projects/utils/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
