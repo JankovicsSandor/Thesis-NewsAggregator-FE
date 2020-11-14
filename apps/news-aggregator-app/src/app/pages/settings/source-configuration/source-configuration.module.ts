@@ -9,7 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SourceConfigurationService } from './services/source-configuration.service';
 import { SourceConfigurationSampleViewComponent } from './source-configuration-sample-view/source-configuration-sample-view.component';
-import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   providers: [SourceConfigurationService],
@@ -24,7 +23,6 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    ToastrModule,
     NewsItemModule,
     ReactiveFormsModule,
     SimpleSelectModule

@@ -14,6 +14,7 @@ import { LoaderIndicatorService } from '../services/loader/loader-indicator.serv
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderIndicatorInterceptor } from '../interceptor/loader-indicator.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent, LoadingIndicatorComponent],
@@ -27,7 +28,8 @@ import { LoaderIndicatorInterceptor } from '../interceptor/loader-indicator.inte
     DataProviderModule,
     MatIconModule,
     MatTooltipModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     LoaderIndicatorService,
