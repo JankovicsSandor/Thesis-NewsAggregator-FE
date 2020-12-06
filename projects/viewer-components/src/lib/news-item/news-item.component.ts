@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NewsConfiguration } from '@shared';
+import { NewsConfiguration, NewsItem } from '@shared';
 
 @Component({
   selector: 'news-item',
@@ -7,7 +7,7 @@ import { NewsConfiguration } from '@shared';
   styleUrls: ['./news-item.component.css']
 })
 export class NewsItemComponent implements OnInit {
-  @Input() newsItem: NewsConfiguration;
+  @Input() newsGroup: NewsItem[];
   constructor() {}
 
   ngOnInit(): void {}

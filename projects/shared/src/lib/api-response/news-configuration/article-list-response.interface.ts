@@ -1,6 +1,5 @@
-import { NewsConfiguration } from '.';
+import { NewsItem } from '.';
 
 export interface ArticleListResponse {
-  result: NewsConfiguration[];
-  total: number;
+  newsItem: NewsItem[];
 }

@@ -14,3 +14,7 @@
   display: flex;
   text-align: center;
 }
+
+.red-border {
+  border: 2px solid red;
+}
