@@ -1,5 +1,5 @@
 <div class="main-container">
     <div *ngFor="let item of (newsList|async)" class="newsItem">
-        <news-item [newsGroup]="item"></news-item>
+        <news-item [newsGroup]="item?.newsItem"></news-item>
     </div>
 </div>

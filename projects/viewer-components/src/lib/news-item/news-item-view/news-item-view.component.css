@@ -1,0 +1,32 @@
+.red-border {
+  border: 2px solid red;
+}
+
+.example-card {
+  max-width: 60vw;
+  margin: auto;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+
+.noPhoto {
+  height: 50px;
+  background-color: gray;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+.similarPicture {
+  width: 100%;
+}
+
+.descriptionText {
+  text-justify: center;
+}
+
+.text-gray {
+  color: rgba(0, 0, 0, 0.54);
+}

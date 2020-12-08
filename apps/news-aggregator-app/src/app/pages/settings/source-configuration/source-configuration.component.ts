@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SourceConfigurationService } from './services/source-configuration.service';
 import { ReplaySubject } from 'rxjs';
-import { NewsConfiguration, NewResourceConfiguration } from '@shared';
+import { NewsConfiguration, NewResourceConfiguration, NewsItem } from '@shared';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SourceConfigurationComponent implements OnInit {
-  lastSample$: ReplaySubject<NewsConfiguration> = new ReplaySubject();
+  lastSample$: ReplaySubject<NewsItem[]> = new ReplaySubject();
   constructor(
     private sourceConfigService: SourceConfigurationService,
     private toastr: ToastrService

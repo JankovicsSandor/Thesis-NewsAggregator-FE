@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-import { NewsConfiguration, NewResourceConfiguration } from '@shared';
+import { NewsConfiguration, NewResourceConfiguration, NewsItem } from '@shared';
 import { ResourceDataProviderService } from '@data-provider';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class SourceConfigurationService {
-  private lastSample$: ReplaySubject<NewsConfiguration> = new ReplaySubject();
+  private lastSample$: ReplaySubject<NewsItem[]> = new ReplaySubject();
 
   constructor(private resourceConfig: ResourceDataProviderService) {}
 
@@ -20,6 +21,7 @@ export class SourceConfigurationService {
   getSampleFromUrl(url: string) {
     this.resourceConfig
       .getResourceConfiguration(url)
+      .pipe(map(item => [item]))
       .subscribe(this.lastSample$);
   }
 

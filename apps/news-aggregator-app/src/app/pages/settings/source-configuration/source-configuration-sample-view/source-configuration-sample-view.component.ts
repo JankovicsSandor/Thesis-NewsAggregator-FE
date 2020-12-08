@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { NewsConfiguration, NewResourceConfiguration } from '@shared';
+import { NewsConfiguration, NewResourceConfiguration, NewsItem } from '@shared';
 
 @Component({
   selector: 'news-aggregator-app-source-configuration-sample-view',
@@ -7,7 +7,7 @@ import { NewsConfiguration, NewResourceConfiguration } from '@shared';
   styleUrls: ['./source-configuration-sample-view.component.css']
 })
 export class SourceConfigurationSampleViewComponent implements OnInit {
-  @Input() sample: NewsConfiguration;
+  @Input() sample: NewsItem[];
   constructor() {}
 
   ngOnInit(): void {}
