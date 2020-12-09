@@ -15,7 +15,7 @@
                 </ng-container>
             </div>
             <div class="col-md-10">
-                <p>
+                <p class="descriptionText">
                     {{mainNews.description}}
                 </p>
             </div>
@@ -23,31 +23,33 @@
         <div *ngIf="showSimilar">
             <h4>Similar articles</h4>
             <mat-divider></mat-divider>
-            <div *ngFor="let item of similarArticles" class="row mt-4">
-                <div class="col-2">
-                    <ng-container *ngIf="item.feedPicture">
-                        <img [src]="item.feedPicture" class="similarPicture" alt="Item producer name">
-                    </ng-container>
-                    <div class="text-gray mt-3">
-                        {{item.publishDate|date:'medium'}}
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div class="row">
-                        <div class="col-md-8 order-1 order-md-1">
-                            <h5>
-                                <a [href]="item.link" target="_other">
-                                    <div>{{item.title}}</div>
-                                </a>
-                            </h5>
-                            <div class="descriptionText">
-                                {{item.description}}
-                            </div>
+            <div class="containerItem">
+                <div *ngFor="let item of similarArticles" class="row mt-4 pt-2 pb-2 ml-0 mr-0 pl-3 pr-3 newItem">
+                    <div class="col-2 ">
+                        <ng-container *ngIf="item.feedPicture">
+                            <img [src]="item.feedPicture" class="similarPicture" alt="Item producer name">
+                        </ng-container>
+                        <div class="text-gray mt-3">
+                            {{item.publishDate|date:'medium'}}
                         </div>
-                        <div class="col-md-4 order-2 order-md-2">
-                            <ng-container *ngIf="item.picture">
-                                <img [src]="item.picture" class="similarPicture" alt="Picture of the article">
-                            </ng-container>
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-md-8 order-1 order-md-1">
+                                <h5>
+                                    <a [href]="item.link" target="_other">
+                                        <div>{{item.title}}</div>
+                                    </a>
+                                </h5>
+                                <div class="descriptionText">
+                                    {{item.description}}
+                                </div>
+                            </div>
+                            <div class="col-md-4 order-2 order-md-2">
+                                <ng-container *ngIf="item.picture">
+                                    <img [src]="item.picture" class="similarPicture" alt="Picture of the article">
+                                </ng-container>
+                            </div>
                         </div>
                     </div>
                 </div>
